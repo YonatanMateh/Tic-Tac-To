@@ -1,0 +1,24 @@
+.ticTacToe {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+    width: 320px;
+    border: 1px solid lightgray;
+    padding: 15px;
+    background-image: linear-gradient(to bottom, #f5f8fa 5%, #e3e7f0);
+
+    .instructions {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+  }
+}

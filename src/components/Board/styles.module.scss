@@ -1,0 +1,90 @@
+$border-color: 12px solid rgba(34, 99, 178, 0.5);
+$win-line-width: 20px;
+
+@mixin vertical($left) {
+  height: 100%;
+  width: $win-line-width;
+  top: 0;
+  left: calc(#{$left} - #{$win-line-width / 2});
+  background-image: linear-gradient(to bottom, #fdf6d3, #f9e9a7);
+}
+
+@mixin horizontal($top) {
+  top: calc(#{$top} - #{$win-line-width / 2});
+  width: 100%;
+  background-image: linear-gradient(to left, #fdf6d3, #f9e9a7);
+}
+
+@mixin diagonal($deg) {
+  width: $win-line-width;
+  top: 0;
+  transform: rotateZ($deg);
+  transform-origin: 50% 0;
+  transition: height 0.7s;
+  height: 140%;
+  border-radius: 8px;
+  background-image: linear-gradient(to bottom, #fdf6d3, #f9e9a7);
+}
+
+.Board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 25px;
+  width: 300px;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    transition: 0.7s;
+    height: $win-line-width;
+    z-index: 0;
+    width: 0;
+    border-radius: 20px;
+  }
+
+  &.h1::after {
+    @include horizontal(16.6666666665%);
+  }
+
+  &.h2::after {
+    @include horizontal(50%);
+  }
+
+  &.h3::after {
+    @include horizontal(83.3333333%);
+  }
+
+  &.v1::after {
+    @include vertical(16.6666666%);
+  }
+
+  &.v2::after {
+    @include vertical(50%);
+  }
+
+  &.v3::after {
+    @include vertical(83.33333%);
+  }
+
+  &.dm::after {
+    left: 0;
+    @include diagonal(-45deg);
+  }
+
+  &.dc::after {
+    right: 0;
+    @include diagonal(45deg);
+  }
+
+  .row {
+    display: flex;
+    z-index: 2;
+  }
+
+  .borderBottom {
+    border-bottom: $border-color;
+  }
+}

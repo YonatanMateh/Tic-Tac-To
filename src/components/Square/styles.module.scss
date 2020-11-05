@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap");
+
+$o-color: #37474f;
+$x-color: #50a1d2;
+$border-color: 12px solid rgba(34, 99, 178, 0.5);
+$size: 90px;
+
+@mixin playerChar($player) {
+  @if $player==1 {
+    color: $x-color;
+    -webkit-text-fill-color: $x-color;
+    text-shadow: 3px 5px 4px rgba(80, 161, 210, 0.3);
+  }
+
+  @else {
+    color: $o-color;
+    -webkit-text-fill-color: $o-color;
+    text-shadow: 3px 5px 4px rgba(55, 71, 79, 0.3);
+  }
+}
+
+.square {
+  width: $size;
+  height: $size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 65px;
+  border: 0;
+  font-weight: bold;
+  font-family: Rubik, sans-serif;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: white;
+  background: transparent;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.border {
+  border-left: $border-color;
+  border-right: $border-color;
+  width: 110px;
+}
+
+.playerX {
+  @include playerChar(1);
+}
+
+.playerO {
+  @include playerChar(2);
+}

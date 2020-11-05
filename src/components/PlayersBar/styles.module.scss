@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap");
+
+$o-color: #37474f;
+$x-color: #50a1d2;
+$avatar-text-color: #4a6495;
+
+@mixin playerChar($player) {
+  font-size: 25px;
+  text-shadow: 0.5px 0.5px 1px rgba(55, 71, 79, 0.3);
+  font-weight: bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  font-family: Rubik, sans-serif;
+
+  @if $player==1 {
+    color: $x-color;
+    -webkit-text-fill-color: $x-color;
+  }
+
+  @else {
+    color: $o-color;
+    -webkit-text-fill-color: $o-color;
+    direction: rtl;
+  }
+}
+
+@mixin message($bg, $color) {
+  background-color: $bg;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 20px;
+  height: 25px;
+  align-items: center;
+  font-weight: bold;
+  padding: 5px;
+  margin-top: 14px;
+
+  >span {
+    font-size: 13px;
+    color: $color;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 40px;
+
+  .player {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+
+    .avatar {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      margin-top: 10px;
+      justify-content: flex-end;
+
+      >.text {
+        font-size: 17px;
+        font-weight: bold;
+        margin: 10px;
+        color: $avatar-text-color;
+        font-family: Rubik, sans-serif;
+      }
+    }
+
+    .avatarX {
+      flex-direction: row-reverse;
+    }
+
+    .playerCharO {
+      @include playerChar(2);
+    }
+
+    .playerCharX {
+      @include playerChar(1);
+    }
+
+    .nextMove {
+      @include message(#ffffff, #a061ff);
+    }
+
+    .winner {
+      @include message(rgba(251, 212, 58, 0.44), #fcba03);
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .show {
+      display: flex;
+    }
+  }
+}

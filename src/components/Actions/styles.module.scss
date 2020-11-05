@@ -1,0 +1,56 @@
+@mixin btn($bg, $boxShadow, $color) {
+  width: 100%;
+  border: 0;
+  background-color: $bg;
+  box-shadow: 0 5px $boxShadow;
+  height: 50px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+
+  >img {
+    margin: 0 2.5px;
+  }
+
+  >span {
+    color: $color;
+    font-weight: bold;
+    font-size: 17px;
+    margin-right: 5px;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.reset {
+  margin-top: 15px;
+  margin-bottom: 16px;
+  width: 65px;
+  height: 40px;
+  background-color: #999bfb;
+  color: white;
+  font-size: 16px;
+  border-radius: 15px;
+  border: 0;
+  box-shadow: 0 5px #8e90fd;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.rateUs {
+  @include btn(#ea9975, #ea8e65, #b67c62);
+}
+
+.settings {
+  @include btn(#eaebf0, #e3e4e9, #a7abb5);
+}
+
+.hidden {
+  visibility: hidden;
+}
