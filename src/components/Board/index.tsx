@@ -60,19 +60,29 @@ export default memo((props: IBoard): JSX.Element => {
 
     const generateBoard = (): JSX.Element[] => {
         return squares.map((row: any[], i: number) =>
-            (<div
+       (<> <div className={cc({[styles.column]: i===0 || i===1,
+       [styles.first]: i === 0,
+       [styles.second]: i === 1})}></div>
+         <div className={cc(styles.bottomBorder, {[styles.hide]: i === 2,
+        [styles.first]: i === 0,
+        [styles.second]: i === 1 })}></div>
+            <div
                 className={cc(styles.row,
                     { [styles.borderBottom]: i === 0 || i === 1 })}
                 key={i * 9}>
                 {row.map((id: number) => (
+                    <>
                     <Square
                         key={id}
                         player={moves[id]}
                         id={id}
                         squareClicked={squareClicked}
                     />
+
+                    </>
                 ))}
-            </div>)
+            </div>
+            </>)
         )
     }
 

@@ -11,13 +11,16 @@ interface ISquare {
 export default memo(
   (props: ISquare): JSX.Element => {
     const { id, player } = props;
+    console.log(id-1%3);
     return (
       <button
         type="button"
         className={cc(
           styles.square,
           styles[`player${player}`],
-          { [styles.border]: (props.id - 1) % 3 === 0 }
+          {
+            [styles.middle]: (id-1) % 3 === 0
+          }
         )}
         onClick={() => props.squareClicked(id)}>
         {player}
